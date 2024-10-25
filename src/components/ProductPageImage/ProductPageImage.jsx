@@ -1,14 +1,8 @@
-import { Box, Grid } from "@radix-ui/themes";
-import { useEffect, useState } from "react";
+import { Box } from "@radix-ui/themes";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 export default function ProductPageImage({ images }) {
-  const [activeImage, setActiveImage] = useState(null);
-
-  useEffect(() => {
-    setActiveImage(images[0]);
-  }, []);
   return (
     <Box maxWidth={"500px"}>
         <Carousel showStatus={false} showIndicators={false}>
@@ -16,7 +10,6 @@ export default function ProductPageImage({ images }) {
           return (
             <img
               key={index}
-              onClick={() => setActiveImage(imageSrc)}
               style={{ width: "100%", borderRadius: "var(--radius-2)", cursor: 'pointer' }}
               alt="Child product images"
               src={imageSrc}
