@@ -44,7 +44,7 @@ export default function Cart() {
           <Box
             width={{ initial: "100%", sm: "40%" }}
             height={"100%"}
-            overflow={"scroll"}
+            overflowY={"scroll"}
             top={"0"}
             position={"fixed"}
             right={cartIsOpen ? "0" : "-100%"}
@@ -90,7 +90,7 @@ export default function Cart() {
                     key={index}
                     title={item.title}
                     price={item.price}
-                    size={item.size}
+                    color={item.color}
                     image={item.image}
                     quantity={item.quantity}
                     handleDelete={setDeleteItemClicked}

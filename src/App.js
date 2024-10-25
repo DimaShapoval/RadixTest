@@ -15,7 +15,7 @@ function App() {
   useEffect(() => {
     async function getProducts() {
       setProductInfo(
-        await axios.get("https://api.escuelajs.co/api/v1/products?offset=1&limit=10")
+        await axios.get("https://api.escuelajs.co/api/v1/products")
       );
     }
     getProducts();

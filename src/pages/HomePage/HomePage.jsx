@@ -11,16 +11,22 @@ export default function HomePage() {
       const { data } = allProducts;
       setCard(
         data.map((items) => {
-          return (
-            <Cards
-              key={items.id}
-              title={items.title}
-              description={items.description}
-              price={items.price}
-              image={items.images[0]}
-              id={items.id}
-            />
-          );
+          if(items.images.length >= 3){
+            return (
+              <Cards
+                key={items.id}
+                title={items.title}
+                description={items.description}
+                price={items.price}
+                image={items.images[0]}
+                id={items.id}
+              />
+            );
+          }
+          else{
+            return null;
+          }
+          
         })
       );
     }

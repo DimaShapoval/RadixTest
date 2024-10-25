@@ -11,7 +11,7 @@ import { useState } from "react";
 
 export default function ProductInfoSection({ productInfo }) {
   const [showDirection, setShowFullDirection] = useState(false);
-  const [selectValue, setSelectValue] = useState("m");
+  const [selectValue, setSelectValue] = useState("black");
 
   const selectSize = (value) => {
     setSelectValue(value);
@@ -24,12 +24,12 @@ export default function ProductInfoSection({ productInfo }) {
     const cartInfo = {
       title: productInfo.title,
       price: productInfo.price,
-      size: productInfo.category.name === 'Clothes' ? selectValue : false,
+      color: selectValue,
       image: productInfo.images[0],
       quantity: 1,
     };
     let existingItem = oldArray.find(
-      (item) => item.title === cartInfo.title && item.size === cartInfo.size
+      (item) => item.title === cartInfo.title && item.color === cartInfo.color
     );
     if (existingItem) {
       existingItem.quantity += 1;
@@ -65,20 +65,20 @@ export default function ProductInfoSection({ productInfo }) {
       <Text as="p" mt={"4"}>
         Price: <Strong>{productInfo.price} $</Strong>
       </Text>
-      {productInfo?.category?.name === 'Clothes' ?  <Box mt={"4"}>
+      <Flex mt={"4"} align={'center'}>
+        <Text as="span" mr={'2'}>Color: </Text>
         <Select.Root size="2" value={selectValue} onValueChange={selectSize}>
           <Select.Trigger />
           <Select.Content>
-            <Select.Item value="xs">XS</Select.Item>
-            <Select.Item value="s">S</Select.Item>
-            <Select.Item value="m">M</Select.Item>
-            <Select.Item value="l">L</Select.Item>
-            <Select.Item value="xl">XL</Select.Item>
-            <Select.Item value="xxl">XXL</Select.Item>
+            <Select.Item value="black">Black</Select.Item>
+            <Select.Item value="white">White</Select.Item>
+            <Select.Item value="pink">Pink</Select.Item>
+            <Select.Item value="yellow">Yellow</Select.Item>
+            <Select.Item value="red">Red</Select.Item>
+            <Select.Item value="blue">Blue</Select.Item>
           </Select.Content>
         </Select.Root>
-      </Box> : null }
-     
+      </Flex>
       <Button onClick={addToCart} mt={"4"} size={"4"}>
         Add to cart
       </Button>

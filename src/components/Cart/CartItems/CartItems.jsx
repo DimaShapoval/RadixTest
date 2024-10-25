@@ -2,7 +2,7 @@ import { Avatar, Box, Card, Flex, Strong, Text } from "@radix-ui/themes";
 
 export default function CartItems({
   title,
-  size,
+  color,
   image,
   price,
   quantity,
@@ -14,7 +14,7 @@ export default function CartItems({
       ? JSON.parse(localStorage.cartInfo)
       : [];
     let index = oldArray.findIndex(
-      (item) => item.title === title && item.size === size
+      (item) => item.title === title && item.color === color
     );
     if (index !== -1) {
       oldArray.splice(index, 1);
@@ -55,11 +55,13 @@ export default function CartItems({
               </svg>
             </Box>
           </Flex>
-          {size ? (
+          {color ? (
             <Text as="div" size="4">
-              Size: <Strong>{size}</Strong>
+              Color: <Strong>{color}</Strong>
             </Text>
-          ) : null}
+          ) : <Text as="div" size="4">
+		  Color: <Strong>{color}</Strong>
+		</Text>}
 
           <Text as="div" size="4" color="">
             Price: <Strong>{price} $</Strong>
