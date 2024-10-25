@@ -1,6 +1,6 @@
 # This project create with React and Radix UI
 
-This is test task
+This is test task and I used [free product API](https://fakeapi.platzi.com/en/rest/products)
 
 ## Available Scripts
 
