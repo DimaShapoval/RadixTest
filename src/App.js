@@ -1,24 +1,47 @@
-import logo from './logo.svg';
-import './App.css';
+import { Flex, Heading, Theme } from "@radix-ui/themes";
+import "./App.css";
+import { NavLink } from "react-router-dom";
+import Routing from "./Routing";
+import { createContext, useEffect, useState } from "react";
+import axios from "axios";
+import Cart from "./components/Cart/Cart";
+
+export const ApiContext = createContext();
 
 function App() {
+  const [productInfo, setProductInfo] = useState(null);
+
+
+  useEffect(() => {
+    async function getProducts() {
+      setProductInfo(
+        await axios.get("https://api.escuelajs.co/api/v1/products?offset=1&limit=10")
+      );
+    }
+    getProducts();
+  }, []);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ApiContext.Provider value={productInfo} >
+      <Theme>
+        <div className="App">
+          <header>
+            <Flex width={"90%"} my={"4"} justify={"between"} align={"center"}>
+              <Heading as="h2">
+                <NavLink to={"/"}>
+                  Radix Products
+                </NavLink>
+              </Heading>
+              <Cart />
+            </Flex>
+          </header>
+          <main>
+            <Theme accentColor="gray">
+              <Routing />
+            </Theme>
+          </main>
+        </div>
+      </Theme>
+    </ApiContext.Provider>
   );
 }
 
