@@ -20,12 +20,12 @@ This function take array of items in cart
 
 #### `oldArray = localStorage.cartInfo ? JSON.parse(localStorage.cartInfo) : []; `
 
-Then created new item with title, price, size(if it's clothes), image, quantity
+Then created new item with title, price, color, image, quantity
 
 ### cartInfo = {
       title: productInfo.title,
       price: productInfo.price,
-      size: productInfo.category.name === 'Clothes' ? selectValue : false,
+      color: selectValue,
       image: productInfo.images[0],
       quantity: 1,
   }
@@ -33,7 +33,7 @@ Then created new item with title, price, size(if it's clothes), image, quantity
 After it function checked identical item in cart and if it has quantity of item `+1` and then add it in cart
 
 ### let existingItem = 
-    oldArray.find((item) => item.title === cartInfo.title && item.size === cartInfo.size);
+    oldArray.find((item) => item.title === cartInfo.title && item.color === cartInfo.color);
     if (existingItem) {
       existingItem.quantity += 1;
     } else {
