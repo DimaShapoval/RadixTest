@@ -6,7 +6,7 @@ export default function Cards({ title, image, price, id }) {
   return (
     <Card onClick={() => navigator(`/product/${id}`)} size="2">
       <Flex direction="column" gap="3">
-        <Heading as="h5" size="2">
+        <Heading style={{height: '50px'}} as="h5" size="2">
           {title}
         </Heading>
         <Box>
