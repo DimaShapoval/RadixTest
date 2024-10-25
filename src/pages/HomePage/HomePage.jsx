@@ -33,7 +33,8 @@ export default function HomePage() {
   }, [allProducts]);
   return (
     <Grid
-      columns={"repeat(auto-fit, minmax(300px, 1fr)"}
+      columns={"repeat(auto-fit, minmax(300px, 350px)"}
+      justify={'center'}
       gap={"6"}
       m={"5"}
       width="auto"
