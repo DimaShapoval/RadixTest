@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# This project create with React and Radix UI
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is test task
 
 ## Available Scripts
 
@@ -8,63 +8,70 @@ In the project directory, you can run:
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Look deploy
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+You can look deploy in this [link](https://radixtest.onrender.com)
 
-### `npm test`
+## Features
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### `addToCart()`
 
-### `npm run build`
+This function take array of items in cart
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### `oldArray = localStorage.cartInfo ? JSON.parse(localStorage.cartInfo) : []; `
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Then created new item with title, price, size(if it's clothes), image, quantity
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### cartInfo = {
+      title: productInfo.title,
+      price: productInfo.price,
+      size: productInfo.category.name === 'Clothes' ? selectValue : false,
+      image: productInfo.images[0],
+      quantity: 1,
+  }
 
-### `npm run eject`
+After it function checked identical item in cart and if it has quantity of item `+1` and then add it in cart
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### let existingItem = 
+    oldArray.find((item) => item.title === cartInfo.title && item.size === cartInfo.size);
+    if (existingItem) {
+      existingItem.quantity += 1;
+    } else {
+      oldArray.push(cartInfo);
+    }
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### `useEffect that count total price`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+When user open cart component `useEffect` count total price. It count by price and quantity of item
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+    setTotalPrice(
+        data.reduce((acc, item) => {
+          return acc + item.price * item.quantity;
+        }, 0)
+      )
+### `deleteItem()`
 
-## Learn More
+The similar with `addToCart()` but uses `findIndex` instead `find`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Radix UI
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Used UI components from this library
 
-### Code Splitting
+### `Box` it's div
+### `Text` have attribute `as` and you can choose tag `as='p'` or `as='span'`
+### `Heading` it's h1-h6 also have attribute `as`
+### `Flex` it's div with display flex
+### `Button` button
+### `Theme` basic tag that give us color of buttons and bg. Have attribute `accentColor` where you can input color of theme
+### `Grid` div with display grid
+### `Card` it component similar like Bootstrap card
+### `Select` useful component that give us cool design and behavior of select
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Conclusion
 
-### Analyzing the Bundle Size
+It was great experience and practice with `React` and UI library `Radix UI`.
+For this task I spand less then one day.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Thanks for read it!
+### With love, 
+### Dmytro
